@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<StickyNote.Models.Note>
+
+<h2>Sticky Notes</h2>
+<a style="padding:0.3rem 0.5rem;border-radius:8px;color:white;text-decoration:none;font-size:large;font-weight:bold;background-color:#212529" href="/Home/Create">+ New Note</a>
+<hr />
+
+<div style="display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center">
+@foreach (var note in Model)
+{
+    <div style="display:grid;grid-template-rows:1.6rem 2.5rem 1fr 2rem;background-color: #fffa9e; padding: 1rem;min-height:19rem ;width:17rem ; border-radius: 8px;">
+        <div style="width:100%;display:flex;gap:1rem;justify-content:end">
+            <nav style=""><a style="text-decoration:none" href="/Home/Edit/@note.Id">Edit</a></nav>
+            <nav style="background-color:red;padding:0px 8px;display:flex;justify-content:center;align-items:center">
+               <a style="text-decoration:none;font-size:small ;color:white;" href="/Home/Delete/@note.Id">X</a>
+            </nav>
+        </div>
+        <h4>@note.Title</h4>
+        <p>@note.Content</p>
+        <p style="font-size:small">@note.CreatedAt</p>
+    </div>
+}
+</div>

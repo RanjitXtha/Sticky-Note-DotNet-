@@ -1,0 +1,12 @@
+﻿@model StickyNote.Models.Note
+
+<h2>New Note</h2>
+<form asp-action="Create" style="margin:auto;display:grid;grid-template-rows:2.5rem 1fr 2rem;background-color: #fffa9e; padding: 1rem;min-height:19rem ;width:17rem ; border-radius: 8px;">
+    <input style="background-color:transparent;border:none;" asp-for="Title" placeholder="Title" />
+
+    <textarea style="resize:none;background-color:transparent;border:none;" asp-for="Content" placeholder="Content"></textarea>
+
+   
+    
+    <button style="background-color:black;color:white;border:none;" type="submit">Save</button>
+</form>
