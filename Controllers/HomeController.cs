@@ -59,7 +59,20 @@ namespace StickyNote.Controllers
             return View(note);
         }
 
+    
         public async Task<IActionResult> Delete(int id)
+        {
+            var note = await _context.Notes.FindAsync(id);
+            if (note == null)
+                return NotFound();
+
+            return View(note); 
+        }
+
+ 
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var note = await _context.Notes.FindAsync(id);
             if (note != null)
@@ -69,5 +82,6 @@ namespace StickyNote.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
+
     }
 }
